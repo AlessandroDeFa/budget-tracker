@@ -1,7 +1,18 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Statistics } from "./pages/Statistics/Statistics";
 
 function App() {
-  return <div className="App">{/* mettere le route react router dom  */}</div>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/Statistics" element={<Statistics />} />
+        {/* <Route path="/Pianificazione" element={<Pianificazione />} /> */}
+      </Routes>
+    </>
+  );
 }
 
 // nav bar con sezioni:
