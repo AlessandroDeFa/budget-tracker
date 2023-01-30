@@ -18,5 +18,6 @@ export const Header = ({ handleClick }) => {
         </div>
       </div>
     </header>
+    // fare il sistema di dark mode e light mode e applicare classe ai link "active" quando si é nella pagina selezionata
   );
 };

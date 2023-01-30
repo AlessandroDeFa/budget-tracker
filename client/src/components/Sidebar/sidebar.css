@@ -2,6 +2,7 @@
   --color-icon: #fefefe;
   --color-sidebar: #444244;
   --color-hover-item: #6d809a;
+  --color-icon-active: #d95258;
 }
 
 .sidebar {
@@ -64,6 +65,10 @@
 
 .container-icon-nav {
   position: relative;
+}
+
+.container-icon-nav.active .icon-nav {
+  color: var(--color-icon-active);
 }
 
 .container-icon-nav.closed:before {
