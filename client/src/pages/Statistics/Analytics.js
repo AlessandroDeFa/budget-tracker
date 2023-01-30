@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import "./analytics.css";
 import { Header } from "../../components/Header/Header";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
-import "./dashboard.css";
 
-export const Dashboard = () => {
+export const Analytics = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {

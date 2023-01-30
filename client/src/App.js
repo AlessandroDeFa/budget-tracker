@@ -1,15 +1,16 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-import { Statistics } from "./pages/Statistics/Statistics";
+import { Analytics } from "./pages/Statistics/Analytics";
+import { Budget } from "./pages/Budget/Budget";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/Statistics" element={<Statistics />} />
-        {/* <Route path="/Pianificazione" element={<Pianificazione />} /> */}
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/budget" element={<Budget />} />
       </Routes>
     </>
   );

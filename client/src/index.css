@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   background: #2b2a2b;
   font-family: 'Poppins', sans-serif;
+  height: 100vh;
 }
 
 code {
