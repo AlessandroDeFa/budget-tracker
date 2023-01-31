@@ -22,6 +22,9 @@
   /* body-- */
 
   --color-bg: #2b2a2b;
+  /* transactions-- */
+
+  --color-border-transactions: #4a494b;
 }
 
 .App.light {
@@ -38,7 +41,7 @@
   --color-header:
     #fefefe;
   --color-shadow-haeder: trasparent;
-  --color-shadow: #757475;
+  --color-shadow: #e4e3e4;
   --color-items-header: #74a4cd;
   --color-icon: #010000;
   --color-hover: #cccbcc;
@@ -50,6 +53,10 @@
   /* body-- */
 
   --color-bg: #fefefe;
+
+  /* transactions-- */
+
+  --color-border-transactions: #4a494b;
 }
 
 .App {
@@ -69,6 +76,8 @@
 }
 
 .main {
-  padding: 4rem 0 0 8.5rem;
+  padding: 3rem 3rem 0 7.5rem;
   flex: auto;
+  display: grid;
+  grid-template-rows: 60% 40%;
 }
