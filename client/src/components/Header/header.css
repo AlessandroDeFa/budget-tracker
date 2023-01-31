@@ -1,17 +1,9 @@
-:root {
-  --color-header:
-    #1d1c1d;
-  --color-items-header:
-
-    #81a6c7;
-  --color-hover: #444244;
-}
-
 header {
   padding: 1rem 1.5rem;
   background-color: var(--color-header);
-  box-shadow: 0px 1px 4px 1px var(--color-header);
+  box-shadow: 0px 1px 4px 1px var(--color-shadow-haeder);
   z-index: 999;
+  position: relative;
 }
 
 .container-header {
@@ -81,4 +73,51 @@ header {
   height: 30px;
   color: var(--color-items-header);
   cursor: pointer;
+}
+
+.theme-settings {
+  position: absolute;
+  top: 100%;
+  background: var(--color-theme-settings);
+  right: 0;
+  width: 250px;
+  height: 200px;
+  box-shadow: 0px 0px 15px 1px var(--color-shadow);
+  opacity: 0;
+  transition: all 200ms ease;
+  color: var(--color-icon);
+  visibility: hidden;
+}
+
+.theme-settings.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.theme-container {
+  padding: 1rem;
+}
+
+.settings {
+  color: var(--color-items-header);
+}
+
+.toggle-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.toggle-settings span:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+}
+
+.icon-theme {
+  display: flex;
+  width: 20px;
+  height: 20px;
 }

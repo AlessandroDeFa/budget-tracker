@@ -3,16 +3,27 @@ import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Analytics } from "./pages/Statistics/Analytics";
 import { Budget } from "./pages/Budget/Budget";
+import { useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "dark" ? "light" : "dark"));
+    console.log(theme);
+  };
+
   return (
-    <>
+    <div className={`App ${theme}`}>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/budget" element={<Budget />} />
+        <Route path="/" element={<Dashboard toggleTheme={toggleTheme} />} />
+        <Route
+          path="/analytics"
+          element={<Analytics toggleTheme={toggleTheme} />}
+        />
+        <Route path="/budget" element={<Budget toggleTheme={toggleTheme} />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

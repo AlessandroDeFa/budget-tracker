@@ -1,0 +1,74 @@
+.App.dark {
+  /* sidebar-- */
+  --color-icon-sidebar: #fefefe;
+  --color-text: #fefefe;
+  --color-sidebar: #444244;
+  --color-hover-item: #6d809a;
+  --color-icon-active: #d95258;
+  --color-border: transparent;
+  /* header-- */
+  --color-header:
+    #1d1c1d;
+  --color-shadow-haeder: #1d1c1d;
+  --color-shadow: #1d1c1d;
+  --color-items-header: #74a4cd;
+  --color-icon: #fefefe;
+  --color-hover: #444244;
+
+  /* themesettings-- */
+
+  --color-theme-settings: #444244;
+
+  /* body-- */
+
+  --color-bg: #2b2a2b;
+}
+
+.App.light {
+
+  /* sidebar-- */
+  --color-text: #010000;
+  --color-icon-sidebar: #757475;
+  --color-sidebar: #fefefe;
+  --color-hover-item: #cccbcc;
+  --color-icon-active: #d95258;
+  --color-border: #cccbcc;
+
+  /* header-- */
+  --color-header:
+    #fefefe;
+  --color-shadow-haeder: trasparent;
+  --color-shadow: #757475;
+  --color-items-header: #74a4cd;
+  --color-icon: #010000;
+  --color-hover: #cccbcc;
+
+  /* themesettings-- */
+
+  --color-theme-settings: #fefefe;
+
+  /* body-- */
+
+  --color-bg: #fefefe;
+}
+
+.App {
+  background: var(--color-bg);
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.flex-1 {
+  display: flex;
+  flex: auto;
+  position: relative;
+}
+
+.main {
+  padding: 4rem 0 0 8.5rem;
+  flex: auto;
+}

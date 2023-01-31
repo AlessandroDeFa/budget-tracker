@@ -1,20 +1,14 @@
-:root {
-  --color-icon: #fefefe;
-  --color-sidebar: #444244;
-  --color-hover-item: #6d809a;
-  --color-icon-active: #d95258;
-}
-
 .sidebar {
-  flex: auto;
   display: flex;
-  width: fit-content;
   padding: 2rem 1.5rem 0 1.5rem;
   background: var(--color-sidebar);
   transition: transform 300ms ease;
   width: 10rem;
+  position: absolute;
+  height: calc(100% - 32px);
   transform: translateX(calc(-100% + 4.5rem));
   overflow: hidden;
+  border-right: 1px solid var(--color-border);
 }
 
 .sidebar.open {
@@ -96,8 +90,12 @@
   opacity: 1;
 }
 
-.title-icon,
 .icon-nav {
+  color: var(--color-icon-sidebar);
+}
+
+.title-icon {
   text-decoration: none;
-  color: var(--color-icon);
+  color: var(--color-text);
+  font-weight: 500;
 }
