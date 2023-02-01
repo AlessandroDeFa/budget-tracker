@@ -14,6 +14,14 @@
   gap: clamp(1rem, 3vw, 4rem);
 }
 
+.amount-transaction.income-transaction {
+  color: var(--color-income);
+}
+
+.amount-transaction.expenses-transaction {
+  color: var(--color-icon-active);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

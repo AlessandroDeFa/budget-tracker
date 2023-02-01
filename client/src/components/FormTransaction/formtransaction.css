@@ -1,4 +1,9 @@
 .form-transaction {
   position: absolute;
   visibility: hidden;
+  width: 200px;
+  height: 500px;
+  z-index: 999;
+  /* background: var(--color-sidebar); */
+  background-color: red;
 }

@@ -8,7 +8,7 @@ export const AddTransaction = () => {
   return (
     <div className="container-add-transaction">
       <div className="text-add-transaction">Add Transaction</div>
-      <div>
+      <div className="btn-container">
         <Fab color="primary" aria-label="add">
           <CgMathPlus className="icon-btn" />
         </Fab>

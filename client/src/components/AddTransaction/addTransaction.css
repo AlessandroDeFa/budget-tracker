@@ -13,6 +13,10 @@
   color: var(--color-text);
 }
 
+.btn-container {
+  z-index: 1;
+}
+
 .icon-btn {
   width: 25px;
   height: 25px;

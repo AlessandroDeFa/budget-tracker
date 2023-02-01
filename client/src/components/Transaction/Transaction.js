@@ -11,7 +11,7 @@ export const Transaction = () => {
           <div>Football</div>
         </div>
         <div className="right-info-transaction">
-          <div className="amount-transaction">3.000,00</div>
+          <div className="amount-transaction income-transaction">3.000,00</div>
           <div>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid,
           </div>
