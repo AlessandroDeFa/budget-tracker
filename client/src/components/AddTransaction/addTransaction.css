@@ -1,0 +1,19 @@
+.container-add-transaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  grid-column: span 2;
+  place-items: center;
+}
+
+.text-add-transaction {
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+
+.icon-btn {
+  width: 25px;
+  height: 25px;
+}

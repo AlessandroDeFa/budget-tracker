@@ -23,8 +23,12 @@
 
   --color-bg: #2b2a2b;
   /* transactions-- */
-
+  --color-income: #4da677;
   --color-border-transactions: #4a494b;
+
+  /* scroll-bar-- */
+  --color-bg-scrollbar: #1d1c1e;
+  --color-scrollbar: #888;
 }
 
 .App.light {
@@ -55,8 +59,12 @@
   --color-bg: #fefefe;
 
   /* transactions-- */
+  --color-income: #4da677;
+  --color-border-transactions: #abaaac;
 
-  --color-border-transactions: #4a494b;
+  /* scroll-bar-- */
+  --color-bg-scrollbar: #888;
+  --color-scrollbar: #444244;
 }
 
 .App {

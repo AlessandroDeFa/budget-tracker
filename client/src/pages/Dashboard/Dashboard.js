@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Transactions } from "../../components/Transactions/Transactions";
+import { Balance } from "../../components/Balance/Balance";
+import { IncomeExpenses } from "../../components/IncomeExpenses/IncomeExpenses";
+import { AddTransaction } from "../../components/AddTransaction/AddTransaction";
 import "./dashboard.css";
 
 export const Dashboard = ({ toggleTheme }) => {
@@ -17,12 +20,10 @@ export const Dashboard = ({ toggleTheme }) => {
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
         <div className="main">
-          <div>
-            <div>Balance</div>
-            <p>
-              <span>€</span>
-              <span>192.400,00</span>
-            </p>
+          <div className="grid-dashboard">
+            <Balance />
+            <IncomeExpenses />
+            <AddTransaction />
           </div>
           <div>
             <Transactions />
