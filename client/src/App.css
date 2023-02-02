@@ -29,6 +29,10 @@
   /* scroll-bar-- */
   --color-bg-scrollbar: #1d1c1e;
   --color-scrollbar: #888;
+  /* form-- */
+  --color-text-inverted: #010000;
+  --color-general:
+    #bdbcbd;
 }
 
 .App.light {
@@ -65,6 +69,11 @@
   /* scroll-bar-- */
   --color-bg-scrollbar: #888;
   --color-scrollbar: #444244;
+
+  /* form-- */
+  --color-text-inverted: #fefefe;
+  --color-general:
+    #bdbcbd;
 }
 
 .App {
