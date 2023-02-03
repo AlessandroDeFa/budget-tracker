@@ -14,10 +14,26 @@ export const FormTransaction = ({
   setName,
   note,
   setNote,
+  handleSubmit,
 }) => {
-  const data = ["ciao", "prova"];
+  const data = [
+    "Shopping",
+    "Home",
+    "Car",
+    "Games",
+    "Investment",
+    "transport",
+    "Food",
+    "Drinks",
+    "Gifts",
+    "Health",
+    "Salary",
+    "Taxes",
+    "Entertainment",
+    "Others",
+  ];
 
-  const [expenses, setExpenses] = useState(false);
+  const [expenses, setExpenses] = useState(true);
   const [income, setIncome] = useState(false);
 
   const incomeAmount = () => {
@@ -104,7 +120,7 @@ export const FormTransaction = ({
                   variant="filled"
                   className="textfield-1"
                   InputLabelProps={{ className: "textfield" }}
-                  inputProps={{ className: "textfield-1" }}
+                  inputProps={{ className: "textfield-1", maxLength: 12 }}
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                 />
@@ -113,12 +129,11 @@ export const FormTransaction = ({
             <div className="input">
               <span>
                 <TextField
-                  // id="filled-basic"
                   label="Note"
                   variant="filled"
                   className="textfield-1"
                   InputLabelProps={{ className: "textfield" }}
-                  inputProps={{ className: "textfield-1" }}
+                  inputProps={{ className: "textfield-1", maxLength: 40 }}
                   multiline
                   maxRows={4}
                   onChange={(e) => setNote(e.target.value)}
@@ -129,7 +144,13 @@ export const FormTransaction = ({
           </div>
         </div>
         <div className="btn-form">
-          <Button variant="contained">Save</Button>
+          <Button
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+            variant="contained"
+          >
+            Save
+          </Button>
         </div>
       </form>
     </div>

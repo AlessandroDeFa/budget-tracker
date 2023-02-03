@@ -10,7 +10,6 @@ export const Header = ({ handleClick, toggleTheme, theme }) => {
 
   const handleTheme = () => {
     setThemeSettings(!themesettings);
-    console.log(localStorage.getItem("theme"));
   };
 
   const themeStorage = localStorage.getItem("theme");

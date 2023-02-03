@@ -2,7 +2,7 @@ import React from "react";
 import "./transactions.css";
 import { Transaction } from "../Transaction/Transaction";
 
-export const Transactions = () => {
+export const Transactions = ({ transactions }) => {
   return (
     <div className="container-transactions">
       <div>
@@ -20,16 +20,14 @@ export const Transactions = () => {
           <div>Note</div>
         </div>
       </div>
+
       <ul className="ul-transaction">
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
+        {transactions.map((transaction) => (
+          <Transaction transaction={transaction} />
+        ))}
       </ul>
     </div>
   );
 };
+
+// mettere nella ul-transaction display flex flex directio reverse

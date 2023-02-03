@@ -1,22 +1,25 @@
 import React from "react";
 import "./transaction.css";
 
-export const Transaction = () => {
+export const Transaction = ({ transaction }) => {
+  const formatted_date = transaction.data_entry.split("T")[0];
   return (
     <li>
       <div className="container-transaction">
         <div className="left-info-transaction">
-          <div>Calio</div>
-          <div>19-02-2002</div>
-          <div>Football</div>
+          <div>{transaction.category}</div>
+          <div>{formatted_date}</div>
+          <div>{transaction.name}</div>
         </div>
         <div className="right-info-transaction">
-          <div className="amount-transaction income-transaction">3.000,00</div>
-          <div>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid,
+          <div className="amount-transaction income-transaction">
+            {transaction.amount}
           </div>
+          <div>{transaction.note}</div>
         </div>
       </div>
     </li>
   );
 };
+
+// sistemare il layput delle transaioni quindi nel css

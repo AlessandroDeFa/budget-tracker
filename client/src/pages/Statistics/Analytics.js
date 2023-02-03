@@ -4,7 +4,7 @@ import { Header } from "../../components/Header/Header";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Transactions } from "../../components/Transactions/Transactions";
 
-export const Analytics = ({ toggleTheme }) => {
+export const Analytics = ({ toggleTheme, transactions, setTransactions }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -21,7 +21,7 @@ export const Analytics = ({ toggleTheme }) => {
             <h1>Analytics</h1>
           </div>
           <div>
-            <Transactions />
+            <Transactions transactions={transactions} />
           </div>
         </div>
       </div>

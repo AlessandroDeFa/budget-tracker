@@ -7,7 +7,7 @@ import { IncomeExpenses } from "../../components/IncomeExpenses/IncomeExpenses";
 import { AddTransaction } from "../../components/AddTransaction/AddTransaction";
 import "./dashboard.css";
 
-export const Dashboard = ({ toggleTheme }) => {
+export const Dashboard = ({ toggleTheme, transactions, setTransactions }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -23,10 +23,13 @@ export const Dashboard = ({ toggleTheme }) => {
           <div className="grid-dashboard">
             <Balance />
             <IncomeExpenses />
-            <AddTransaction />
+            <AddTransaction
+              transactions={transactions}
+              setTransactions={setTransactions}
+            />
           </div>
           <div>
-            <Transactions />
+            <Transactions transactions={transactions} />
           </div>
         </div>
       </div>
