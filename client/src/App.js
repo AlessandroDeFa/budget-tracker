@@ -6,10 +6,12 @@ import { Budget } from "./pages/Budget/Budget";
 import { useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   const toggleTheme = () => {
-    setTheme((curr) => (curr === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (
@@ -27,8 +29,6 @@ function App() {
 }
 
 // nav bar con sezioni:
-// -header: nome account: ospite tasto con black e white mode
-// -dashboard: con bilancio totale + opzione di aggiungere una trandazione + trasazioni passate
 // -statistiche: guardare dashboard sito pirateking
 // -pianificazione(da decidere nel tempo): guardare app wallet su pianificarione
 

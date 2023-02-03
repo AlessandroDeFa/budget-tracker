@@ -1,16 +1,19 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdSettingsApplications } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 import { Switch } from "@mui/material";
 import "./header.css";
 
-export const Header = ({ handleClick, toggleTheme }) => {
+export const Header = ({ handleClick, toggleTheme, theme }) => {
   const [themesettings, setThemeSettings] = useState(false);
 
   const handleTheme = () => {
     setThemeSettings(!themesettings);
+    console.log(localStorage.getItem("theme"));
   };
+
+  const themeStorage = localStorage.getItem("theme");
 
   const title = window.location.pathname.replace("/", "");
 
@@ -44,13 +47,15 @@ export const Header = ({ handleClick, toggleTheme }) => {
                 <span className="text-theme">Light</span>
               </span>
               <span>
-                <Switch onChange={toggleTheme} />
+                <Switch
+                  onChange={toggleTheme}
+                  checked={themeStorage === "light" ? true : false}
+                />
               </span>
             </div>
           </div>
         </div>
       </div>
     </header>
-    // fare il sistema di dark mode e light mode e applicare classe ai link "active" quando si é nella pagina selezionata
   );
 };
