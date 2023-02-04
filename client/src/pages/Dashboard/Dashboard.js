@@ -7,7 +7,13 @@ import { IncomeExpenses } from "../../components/IncomeExpenses/IncomeExpenses";
 import { AddTransaction } from "../../components/AddTransaction/AddTransaction";
 import "./dashboard.css";
 
-export const Dashboard = ({ toggleTheme, transactions, setTransactions }) => {
+export const Dashboard = ({
+  toggleTheme,
+  transactions,
+  setTransactions,
+  setFormSubmitted,
+  formSubmitted,
+}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -26,6 +32,8 @@ export const Dashboard = ({ toggleTheme, transactions, setTransactions }) => {
             <AddTransaction
               transactions={transactions}
               setTransactions={setTransactions}
+              formSubmitted={formSubmitted}
+              setFormSubmitted={setFormSubmitted}
             />
           </div>
           <div>

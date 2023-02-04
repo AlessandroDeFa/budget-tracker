@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [transactions, setTransactions] = useState([]);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -25,14 +26,8 @@ function App() {
     }
     fetchData();
 
-    const intervalId = setInterval(fetchData, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [transactions]);
-
-  // chidere a cahtgpt perche questa funzione va all inifito !IMPORTANTE
-  // chidere a cahtgpt perche questa funzione va all inifito !IMPORTANTE
-  // chidere a cahtgpt perche questa funzione va all inifito !IMPORTANTE
+    setFormSubmitted(false);
+  }, [formSubmitted]);
 
   return (
     <div className={`App ${theme}`}>
@@ -44,6 +39,8 @@ function App() {
               toggleTheme={toggleTheme}
               transactions={transactions}
               setTransactions={setTransactions}
+              formSubmitted={formSubmitted}
+              setFormSubmitted={setFormSubmitted}
             />
           }
         />

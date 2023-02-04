@@ -34,9 +34,17 @@ app.post("/api/insert", (req, res) => {
   const note = req.body.note;
   const sqlInsert =
     "INSERT INTO transactions (amount, category, name, note) VALUES (?,?,?,?);";
-  db.query(sqlInsert, [amount, category, name, note], (err, result) => {
-    console.log(err);
-  });
+  try {
+    db.query(sqlInsert, [amount, category, name, note], (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.status(200).send({ message: "Transaction inserted successfully." });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to insert transaction." });
+  }
 });
 
 //put

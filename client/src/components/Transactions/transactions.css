@@ -25,9 +25,16 @@
 
 .right-info,
 .left-info {
-  display: flex;
-  display: flex;
-  gap: clamp(1rem, 3vw, 4rem);
+  display: grid;
+  place-content: center start;
+}
+
+.left-info {
+  grid-template-columns: minmax(90px, 110px) minmax(90px, 110px) minmax(90px, 110px);
+}
+
+.right-info {
+  grid-template-columns: minmax(90px, 110px) minmax(90px, 1fr);
 }
 
 .ul-transaction {
@@ -36,4 +43,5 @@
   list-style: none;
   overflow-y: auto;
   max-height: 282px;
+
 }

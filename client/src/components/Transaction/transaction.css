@@ -4,14 +4,35 @@
   color: var(--color-text);
   border-bottom: 2px solid var(--color-border-transactions);
   font-size: .9rem;
-  padding: 1rem 0;
+  padding: .5rem 0;
 }
 
 .right-info-transaction,
 .left-info-transaction {
+  /* display: flex;
+  gap: clamp(1rem, 3vw, 4rem); */
+  display: grid;
+  place-content: center start;
+}
+
+.left-info-transaction {
+  /* grid-template-columns: 150px 150px 150px 1fr; */
+  grid-template-columns: minmax(90px, 110px) minmax(90px, 110px) minmax(90px, 110px);
+}
+
+.right-info-transaction {
+  /* grid-template-columns: 150px 150px 150px 1fr; */
+  grid-template-columns: minmax(90px, 110px) minmax(90px, 1fr) minmax(min-content, max-content);
+}
+
+.amount-transaction {
   display: flex;
+  align-items: center;
+}
+
+.container-note {
   display: flex;
-  gap: clamp(1rem, 3vw, 4rem);
+  align-items: center;
 }
 
 .amount-transaction.income-transaction {
@@ -20,6 +41,18 @@
 
 .amount-transaction.expenses-transaction {
   color: var(--color-icon-active);
+}
+
+.container-del-mod {
+  display: flex;
+  justify-content: end;
+}
+
+.icon-modify,
+.icon-del {
+  width: 20px;
+  height: 20px;
+  color: var(--color-text)
 }
 
 ::-webkit-scrollbar {

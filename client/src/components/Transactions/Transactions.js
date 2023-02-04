@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./transactions.css";
 import { Transaction } from "../Transaction/Transaction";
 
@@ -22,12 +22,12 @@ export const Transactions = ({ transactions }) => {
       </div>
 
       <ul className="ul-transaction">
-        {transactions.map((transaction) => (
-          <Transaction transaction={transaction} />
-        ))}
+        {transactions
+          .sort((a, b) => b.id - a.id)
+          .map((transaction) => (
+            <Transaction key={transaction.id} transaction={transaction} />
+          ))}
       </ul>
     </div>
   );
 };
-
-// mettere nella ul-transaction display flex flex directio reverse

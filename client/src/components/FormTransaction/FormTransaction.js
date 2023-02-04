@@ -15,6 +15,10 @@ export const FormTransaction = ({
   note,
   setNote,
   handleSubmit,
+  expenses,
+  setExpenses,
+  income,
+  setIncome,
 }) => {
   const data = [
     "Shopping",
@@ -32,9 +36,6 @@ export const FormTransaction = ({
     "Entertainment",
     "Others",
   ];
-
-  const [expenses, setExpenses] = useState(true);
-  const [income, setIncome] = useState(false);
 
   const incomeAmount = () => {
     setIncome(true);
