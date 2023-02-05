@@ -80,11 +80,27 @@
   background: var(--color-bg);
 }
 
+.overlay.open {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.overlay.openUpdate {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+
 .flex {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 
 .flex-1 {
   display: flex;

@@ -7,13 +7,7 @@ import { IncomeExpenses } from "../../components/IncomeExpenses/IncomeExpenses";
 import { AddTransaction } from "../../components/AddTransaction/AddTransaction";
 import "./dashboard.css";
 
-export const Dashboard = ({
-  toggleTheme,
-  transactions,
-  setTransactions,
-  setFormSubmitted,
-  formSubmitted,
-}) => {
+export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -22,22 +16,17 @@ export const Dashboard = ({
 
   return (
     <div className="flex">
-      <Header handleClick={handleClick} toggleTheme={toggleTheme} />
+      <Header handleClick={handleClick} />
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
         <div className="main">
           <div className="grid-dashboard">
             <Balance />
             <IncomeExpenses />
-            <AddTransaction
-              transactions={transactions}
-              setTransactions={setTransactions}
-              formSubmitted={formSubmitted}
-              setFormSubmitted={setFormSubmitted}
-            />
+            <AddTransaction />
           </div>
           <div>
-            <Transactions transactions={transactions} />
+            <Transactions />
           </div>
         </div>
       </div>

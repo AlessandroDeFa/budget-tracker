@@ -3,14 +3,14 @@ import "./addTransaction.css";
 import { Fab } from "@mui/material";
 import { CgMathPlus } from "react-icons/cg";
 import { FormTransaction } from "../FormTransaction/FormTransaction";
+import { UpdateTransaction } from "../UpdateTransaction/UpdateTransaction";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
 
-export const AddTransaction = ({
-  setTransactions,
-  transactions,
-  formSubmitted,
-  setFormSubmitted,
-}) => {
-  const [form, setForm] = useState(false);
+// togliere not null nel databse su note e mettere che e facoltativo
+
+export const AddTransaction = () => {
+  const { setFormSubmitted, form, setForm } = useContext(ContextApp);
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -30,14 +30,14 @@ export const AddTransaction = ({
   //fetch post data from form to server
   function handleSubmit(e) {
     e.preventDefault();
-
     let error = false;
-    if (amount === 0 || amount === "" || !category || !name || !note) {
+    if (amount === 0 || amount === "" || !category || !name) {
       error = true;
       console.error("error: Empty field(s)");
     }
     if (!error) {
       let updatedAmount = expenses ? -amount : Math.abs(amount);
+
       setFormSubmitted(true);
       fetch("http://localhost:3001/api/insert", {
         method: "POST",
@@ -55,6 +55,10 @@ export const AddTransaction = ({
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
+          setAmount(0);
+          setCategory("");
+          setName("");
+          setNote("");
           return response.json();
         })
         .then((data) => {

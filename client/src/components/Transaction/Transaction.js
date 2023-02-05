@@ -3,9 +3,31 @@ import "./transaction.css";
 import { Button } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import { MdMode } from "react-icons/md";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
 
-export const Transaction = ({ transaction }) => {
+export const Transaction = ({ transaction, activeFormUpdate }) => {
   const formatted_date = transaction.data_entry.split("T")[0];
+  const { setFormSubmitted } = useContext(ContextApp);
+
+  const deleteTransaction = (id) => {
+    setFormSubmitted(true);
+    fetch(`http://localhost:3001/api/delete/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete transaction");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Transaction deleted successfully:", data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  };
 
   return (
     <li>
@@ -23,19 +45,20 @@ export const Transaction = ({ transaction }) => {
                 : "expenses-transaction"
             } `}
           >
-            {transaction.amount}
+            {transaction.amount > 0
+              ? `+€${parseFloat(transaction.amount.toFixed(2))}`
+              : `-€${Math.abs(transaction.amount)}`}
           </div>
           <div className="container-note">{transaction.note}</div>
           <div className="container-del-mod">
             <Button
-              // onClick={() => setForm(!form)}
+              onClick={() => activeFormUpdate(transaction.id)}
               variant="text"
-              // className="btn-exit-form"
             >
               <MdMode className="icon-modify" />
             </Button>
             <Button
-              // onClick={() => setForm(!form)}
+              onClick={() => deleteTransaction(transaction.id)}
               variant="text"
               className="btn-exit-form"
             >

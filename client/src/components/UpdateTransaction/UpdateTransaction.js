@@ -1,44 +1,28 @@
-import React, { useState } from "react";
-import "./formtransaction.css";
+import React from "react";
+import "./updateTransaction.css";
 import { TextField, Autocomplete, Button } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
+import data from "../FormTransaction/FormTransaction";
 
-const data = [
-  "Shopping",
-  "Home",
-  "Car",
-  "Games",
-  "Investment",
-  "transport",
-  "Food",
-  "Drinks",
-  "Gifts",
-  "Health",
-  "Salary",
-  "Taxes",
-  "Entertainment",
-  "Others",
-];
-
-export default data;
-
-export const FormTransaction = ({
-  form,
-  setForm,
-  amount,
-  setAmount,
-  category,
-  setCategory,
-  name,
-  setName,
-  note,
-  setNote,
-  handleSubmit,
+export const UpdateTransaction = ({
+  newAmount,
+  setNewAmount,
+  newCategory,
+  setNewCategory,
+  newName,
+  setNewName,
+  newNote,
+  setNewNote,
   expenses,
   setExpenses,
   income,
   setIncome,
+  handleSubmitUpdate,
+  idUpdate,
 }) => {
+  const { formUpdate, setFormUpdate } = useContext(ContextApp);
   const incomeAmount = () => {
     setIncome(true);
     setExpenses(false);
@@ -48,13 +32,14 @@ export const FormTransaction = ({
     setExpenses(true);
     setIncome(false);
   };
-
   return (
-    <div className={`form-transaction ${form ? "open" : "closed"}`}>
+    <div
+      className={`form-update-transaction ${formUpdate ? "open" : "closed"}`}
+    >
       <form action="" className="form">
         <div className="exit-form">
           <Button
-            onClick={() => setForm(!form)}
+            onClick={() => setFormUpdate(!formUpdate)}
             variant="text"
             className="btn-exit-form"
           >
@@ -82,13 +67,13 @@ export const FormTransaction = ({
               id="outlined-basic"
               variant="outlined"
               type="number"
-              value={amount}
+              value={newAmount}
               inputProps={{
                 className: `amount-form ${
                   income ? "income-form" : "expenses-form"
                 }`,
               }}
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={(e) => setNewAmount(e.target.value)}
             />
           </div>
         </div>
@@ -101,15 +86,15 @@ export const FormTransaction = ({
                   disablePortal
                   id="combo-box-demo"
                   options={data}
-                  onChange={(event, value) => setCategory(value)}
+                  onChange={(event, value) => setNewCategory(value)}
                   renderInput={(params) => (
                     <TextField
                       {...params}
                       label="Category *"
                       variant="filled"
-                      value={category}
+                      value={newCategory}
                       InputLabelProps={{ className: "textfield" }}
-                      onChange={(e) => setCategory(e.target.value)}
+                      onChange={(e) => setNewCategory(e.target.value)}
                     />
                   )}
                 />
@@ -124,8 +109,8 @@ export const FormTransaction = ({
                   className="textfield-1"
                   InputLabelProps={{ className: "textfield" }}
                   inputProps={{ className: "textfield-1", maxLength: 12 }}
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
+                  onChange={(e) => setNewName(e.target.value)}
+                  value={newName}
                 />
               </span>{" "}
             </div>
@@ -139,8 +124,8 @@ export const FormTransaction = ({
                   inputProps={{ className: "textfield-1", maxLength: 40 }}
                   multiline
                   maxRows={4}
-                  onChange={(e) => setNote(e.target.value)}
-                  value={note}
+                  onChange={(e) => setNewNote(e.target.value)}
+                  value={newNote}
                 />
               </span>{" "}
             </div>
@@ -149,10 +134,10 @@ export const FormTransaction = ({
         <div className="btn-form">
           <Button
             type="submit"
-            onClick={(e) => handleSubmit(e)}
+            onClick={(e) => handleSubmitUpdate(e, idUpdate)}
             variant="contained"
           >
-            Save
+            Save Changes
           </Button>
         </div>
       </form>

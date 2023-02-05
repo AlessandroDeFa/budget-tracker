@@ -2,7 +2,7 @@ header {
   padding: 1rem 1.5rem;
   background-color: var(--color-header);
   box-shadow: 0px 1px 4px 1px var(--color-shadow-haeder);
-  z-index: 999;
+  z-index: 99;
   position: relative;
 }
 

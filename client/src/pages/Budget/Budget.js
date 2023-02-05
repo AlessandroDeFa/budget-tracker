@@ -3,7 +3,7 @@ import "./budget.css";
 import { Header } from "../../components/Header/Header";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 
-export const Budget = ({ toggleTheme }) => {
+export const Budget = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -12,7 +12,7 @@ export const Budget = ({ toggleTheme }) => {
 
   return (
     <div className="flex">
-      <Header handleClick={handleClick} toggleTheme={toggleTheme} />
+      <Header handleClick={handleClick} />
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
         <div className="main"></div>

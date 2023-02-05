@@ -1,8 +1,24 @@
 import React from "react";
 import "./incomeExpenses.css";
 import { SlGraph } from "react-icons/sl";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
 
 export const IncomeExpenses = () => {
+  const { transactions } = useContext(ContextApp);
+
+  const amount = transactions.map((transaction) => transaction.amount);
+
+  const income = amount
+    .filter((amount) => amount > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expenses = amount
+    .filter((amount) => amount < 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
   return (
     <div>
       <div className="container-inc-exp">
@@ -13,7 +29,7 @@ export const IncomeExpenses = () => {
           <div>
             <div className="title-income">Income</div>
             <div className="income">
-              <span>5.700,00</span>
+              <span>{income}</span>
               <span>€</span>
             </div>
           </div>
@@ -25,7 +41,7 @@ export const IncomeExpenses = () => {
           <div>
             <div>Expense</div>
             <div className="expenses">
-              <span>2.700,00</span>
+              <span>{expenses}</span>
               <span>€</span>
             </div>
           </div>

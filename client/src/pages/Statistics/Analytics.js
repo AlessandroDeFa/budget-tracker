@@ -4,7 +4,7 @@ import { Header } from "../../components/Header/Header";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Transactions } from "../../components/Transactions/Transactions";
 
-export const Analytics = ({ toggleTheme, transactions, setTransactions }) => {
+export const Analytics = ({ transactions, setTransactions }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ export const Analytics = ({ toggleTheme, transactions, setTransactions }) => {
 
   return (
     <div className="flex">
-      <Header handleClick={handleClick} toggleTheme={toggleTheme} />
+      <Header handleClick={handleClick} />
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
         <div className="main">

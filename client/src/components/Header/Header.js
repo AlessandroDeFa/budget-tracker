@@ -4,8 +4,12 @@ import { MdSettingsApplications } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 import { Switch } from "@mui/material";
 import "./header.css";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
 
-export const Header = ({ handleClick, toggleTheme, theme }) => {
+export const Header = ({ handleClick }) => {
+  const { toggleTheme } = useContext(ContextApp);
+
   const [themesettings, setThemeSettings] = useState(false);
 
   const handleTheme = () => {
