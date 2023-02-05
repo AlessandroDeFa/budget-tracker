@@ -8,7 +8,7 @@ import { ContextApp } from "../../App";
 
 export const Transaction = ({ transaction, activeFormUpdate }) => {
   const formatted_date = transaction.data_entry.split("T")[0];
-  const { setFormSubmitted } = useContext(ContextApp);
+  const { setFormSubmitted, form, formUpdate } = useContext(ContextApp);
 
   const deleteTransaction = (id) => {
     setFormSubmitted(true);
@@ -52,13 +52,17 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
           <div className="container-note">{transaction.note}</div>
           <div className="container-del-mod">
             <Button
-              onClick={() => activeFormUpdate(transaction.id)}
+              onClick={form ? () => {} : () => activeFormUpdate(transaction.id)}
               variant="text"
             >
               <MdMode className="icon-modify" />
             </Button>
             <Button
-              onClick={() => deleteTransaction(transaction.id)}
+              onClick={
+                form || formUpdate
+                  ? () => {}
+                  : () => deleteTransaction(transaction.id)
+              }
               variant="text"
               className="btn-exit-form"
             >
