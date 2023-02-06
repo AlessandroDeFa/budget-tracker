@@ -90,7 +90,7 @@ app.delete("/api/delete/:id", (req, res) => {
       if (err) {
         throw err;
       }
-      console.log(result);
+
       res.status(200).send({ message: "Transaction deleted successfully." });
     });
   } catch (err) {

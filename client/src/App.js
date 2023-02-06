@@ -13,6 +13,12 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [transactions, setTransactions] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errorAdd, setErrorAdd] = useState(false);
+  const [successAdd, setSuccessAdd] = useState(false);
+  const [errorDel, setErrorDel] = useState(false);
+  const [successDel, setSuccessDel] = useState(false);
+  const [errorUp, setErrorUp] = useState(false);
+  const [successUp, setSuccessUp] = useState(false);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -50,6 +56,18 @@ function App() {
           setForm,
           formUpdate,
           setFormUpdate,
+          errorAdd,
+          setErrorAdd,
+          successAdd,
+          setSuccessAdd,
+          errorDel,
+          successDel,
+          setErrorDel,
+          setSuccessDel,
+          errorUp,
+          setErrorUp,
+          successUp,
+          setSuccessUp,
         }}
       >
         <Routes>

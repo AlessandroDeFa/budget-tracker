@@ -6,7 +6,7 @@
   gap: 2rem;
   grid-column: span 2;
   place-items: center;
-  position: relative;
+  /* position: relative; */
 }
 
 .text-add-transaction {

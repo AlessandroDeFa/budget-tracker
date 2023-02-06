@@ -109,8 +109,10 @@
 }
 
 .main {
-  padding: 3rem 3rem 0 7.5rem;
+  margin-left: 7.5rem;
+  padding: 3rem 3rem 0 0;
   flex: auto;
   display: grid;
   grid-template-rows: 60% 40%;
+  position: relative;
 }

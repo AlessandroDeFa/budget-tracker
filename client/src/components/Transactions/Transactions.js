@@ -4,16 +4,23 @@ import { Transaction } from "../Transaction/Transaction";
 import { UpdateTransaction } from "../UpdateTransaction/UpdateTransaction";
 import { useContext } from "react";
 import { ContextApp } from "../../App";
+import { AlertMessasgeDelete } from "../AlertMessageDelete/AlertMessasgeDelete";
+import { AlertMessageUpdated } from "../AlertMessageUpdate/AlertMessageUpdate";
 
 export const Transactions = () => {
-  const { transactions, formUpdate, setFormUpdate, setFormSubmitted } =
-    useContext(ContextApp);
+  const {
+    transactions,
+    formUpdate,
+    setFormUpdate,
+    setFormSubmitted,
+    setErrorUp,
+    setSuccessUp,
+  } = useContext(ContextApp);
   const [newAmount, setNewAmount] = useState(0);
   const [newCategory, setNewCategory] = useState("");
   const [newName, setNewName] = useState("");
   const [newNote, setNewNote] = useState("");
   const [idUpdate, setIdUpdate] = useState(0);
-
   const [expenses, setExpenses] = useState(true);
   const [income, setIncome] = useState(false);
 
@@ -24,6 +31,7 @@ export const Transactions = () => {
     let error = false;
     if (newAmount === 0 || newAmount === "" || !newCategory || !newName) {
       error = true;
+      setErrorUp(true);
       console.error("error: Empty field(s)");
     }
     if (!error) {
@@ -51,12 +59,10 @@ export const Transactions = () => {
           setNewCategory("");
           setNewName("");
           setNewNote("");
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
+          setSuccessUp(response);
         })
         .catch((error) => {
+          setErrorUp(true);
           console.error("There was a problem with the fetch operation:", error);
         });
     }
@@ -112,6 +118,8 @@ export const Transactions = () => {
             />
           ))}
       </ul>
+      <AlertMessasgeDelete />
+      <AlertMessageUpdated />
     </div>
   );
 };

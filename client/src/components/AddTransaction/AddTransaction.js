@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./addTransaction.css";
 import { Fab } from "@mui/material";
 import { CgMathPlus } from "react-icons/cg";
@@ -6,11 +6,13 @@ import { FormTransaction } from "../FormTransaction/FormTransaction";
 import { UpdateTransaction } from "../UpdateTransaction/UpdateTransaction";
 import { useContext } from "react";
 import { ContextApp } from "../../App";
+import { AlertMessage } from "../AlertMessage/AlertMessage";
 
 // togliere not null nel databse su note e mettere che e facoltativo
 
 export const AddTransaction = () => {
-  const { setFormSubmitted, form, setForm } = useContext(ContextApp);
+  const { setFormSubmitted, form, setForm, setErrorAdd, setSuccessAdd } =
+    useContext(ContextApp);
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -33,8 +35,9 @@ export const AddTransaction = () => {
     let error = false;
     if (amount === 0 || amount === "" || !category || !name) {
       error = true;
-      console.error("error: Empty field(s)");
+      setErrorAdd(true);
     }
+
     if (!error) {
       let updatedAmount = expenses ? -amount : Math.abs(amount);
 
@@ -59,12 +62,10 @@ export const AddTransaction = () => {
           setCategory("");
           setName("");
           setNote("");
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
+          setSuccessAdd(response);
         })
         .catch((error) => {
+          setErrorAdd(error);
           console.error("There was a problem with the fetch operation:", error);
         });
     }
@@ -95,6 +96,7 @@ export const AddTransaction = () => {
         income={income}
         setIncome={setIncome}
       />
+      <AlertMessage />
     </div>
   );
 };

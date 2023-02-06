@@ -5,10 +5,14 @@ import { RxCross2 } from "react-icons/rx";
 import { MdMode } from "react-icons/md";
 import { useContext } from "react";
 import { ContextApp } from "../../App";
+import { IoMdTrash } from "react-icons/io";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 export const Transaction = ({ transaction, activeFormUpdate }) => {
   const formatted_date = transaction.data_entry.split("T")[0];
-  const { setFormSubmitted, form, formUpdate } = useContext(ContextApp);
+  const { setFormSubmitted, form, formUpdate, setErrorDel, setSuccessDel } =
+    useContext(ContextApp);
 
   const deleteTransaction = (id) => {
     setFormSubmitted(true);
@@ -17,14 +21,13 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
     })
       .then((response) => {
         if (!response.ok) {
+          setErrorDel(true);
           throw new Error("Failed to delete transaction");
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Transaction deleted successfully:", data);
+        setSuccessDel(response);
       })
       .catch((error) => {
+        setErrorDel(true);
         console.error("There was a problem with the fetch operation:", error);
       });
   };
@@ -66,7 +69,7 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
               variant="text"
               className="btn-exit-form"
             >
-              <RxCross2 className="icon-del" />
+              <IoMdTrash className="icon-del" />
             </Button>
           </div>
         </div>
