@@ -59,6 +59,7 @@ export const Transactions = () => {
           setNewCategory("");
           setNewName("");
           setNewNote("");
+          setFormUpdate(false);
           setSuccessUp(response);
         })
         .catch((error) => {
