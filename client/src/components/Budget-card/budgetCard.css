@@ -1,0 +1,46 @@
+.card-budgets {
+  margin-top: 2rem;
+  background-color: var(--color-sidebar);
+  padding: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background-color: var(--color-scrollbar);
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--color-items-header);
+  transition: all 400ms ease;
+}
+
+.btn-budget-card {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.min-amount {
+  font-size: 1.4rem;
+}
+
+.max-amount {
+  color: var(--color-scrollbar);
+  font-size: 1.1rem;
+}

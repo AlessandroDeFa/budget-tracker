@@ -9,19 +9,15 @@
 
 .right-info-transaction,
 .left-info-transaction {
-  /* display: flex;
-  gap: clamp(1rem, 3vw, 4rem); */
   display: grid;
   place-content: center start;
 }
 
 .left-info-transaction {
-  /* grid-template-columns: 150px 150px 150px 1fr; */
   grid-template-columns: minmax(90px, 110px) minmax(90px, 110px) minmax(90px, 110px);
 }
 
 .right-info-transaction {
-  /* grid-template-columns: 150px 150px 150px 1fr; */
   grid-template-columns: minmax(90px, 110px) minmax(90px, 1fr) minmax(min-content, max-content);
 }
 
@@ -45,7 +41,7 @@
 
 .container-del-mod {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .icon-modify,
