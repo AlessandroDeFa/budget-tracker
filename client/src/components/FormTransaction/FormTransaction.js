@@ -9,7 +9,7 @@ const data = [
   "Car",
   "Games",
   "Investment",
-  "transport",
+  "Transport",
   "Food",
   "Drinks",
   "Gifts",
