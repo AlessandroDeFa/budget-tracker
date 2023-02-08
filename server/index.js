@@ -99,4 +99,34 @@ app.delete("/api/delete/:id", (req, res) => {
   }
 });
 
+// GET BUDGETS
+
+app.get("/api/get-budgets", (req, res) => {
+  const sqlGet = "SELECT * FROM budgets";
+  db.query(sqlGet, (err, result) => {
+    res.send(result);
+  });
+});
+
+// POST BUDGETS
+
+app.post("/api/insert-budget", (req, res) => {
+  const amountBudget = req.body.amountBudget;
+  const categoryBudget = req.body.categoryBudget;
+
+  const sqlInsert =
+    "INSERT INTO budgets (amount_budgets, category_budgets) VALUES (?,?);";
+  try {
+    db.query(sqlInsert, [amountBudget, categoryBudget], (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.status(200).send({ message: "Budgets inserted successfully." });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to insert budgets." });
+  }
+});
+
 app.listen(3001, () => console.log("server running on port 3001"));

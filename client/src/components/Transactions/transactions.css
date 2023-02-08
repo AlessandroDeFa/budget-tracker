@@ -43,6 +43,7 @@
   padding: 0;
   list-style: none;
   overflow-y: auto;
-  max-height: 282px;
+  height: calc(100% - 9rem);
+  /* max-height: 282px; */
 
 }

@@ -12,7 +12,9 @@ function App() {
   const [formUpdate, setFormUpdate] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [transactions, setTransactions] = useState([]);
+  const [budgets, setBudgets] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formBudgetSubmitted, setFormBudgetSubmitted] = useState(false);
   const [errorAdd, setErrorAdd] = useState(false);
   const [successAdd, setSuccessAdd] = useState(false);
   const [errorDel, setErrorDel] = useState(false);
@@ -39,6 +41,19 @@ function App() {
     setFormSubmitted(false);
   }, [formSubmitted]);
 
+  //fetch data budgets from database to client
+
+  useEffect(() => {
+    async function fetchDataBudget() {
+      const response = await fetch("http://localhost:3001/api/get-budgets");
+      const data = await response.json();
+      setBudgets(data);
+    }
+    fetchDataBudget();
+
+    setFormBudgetSubmitted(false);
+  }, [formBudgetSubmitted]);
+
   return (
     <div className={`App ${theme}`}>
       <div
@@ -51,7 +66,10 @@ function App() {
           toggleTheme,
           transactions,
           setTransactions,
+          budgets,
+          setBudgets,
           setFormSubmitted,
+          setFormBudgetSubmitted,
           form,
           setForm,
           formUpdate,
