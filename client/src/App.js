@@ -10,6 +10,7 @@ export const ContextApp = createContext();
 function App() {
   const [form, setForm] = useState(false);
   const [formUpdate, setFormUpdate] = useState(false);
+  const [infoBudget, setInfoBudget] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
@@ -74,6 +75,8 @@ function App() {
           setForm,
           formUpdate,
           setFormUpdate,
+          infoBudget,
+          setInfoBudget,
           errorAdd,
           setErrorAdd,
           successAdd,

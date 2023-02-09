@@ -6,7 +6,7 @@
 }
 
 .card-budgets {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background-color: var(--color-sidebar);
   padding: 1rem;
   border: 1px solid var(--color-border);
@@ -24,8 +24,6 @@
   color: var(--color-text);
   margin-bottom: 1rem;
 }
-
-
 
 .progress {
   width: 100%;

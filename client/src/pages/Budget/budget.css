@@ -3,8 +3,8 @@
   margin-right: 3rem;
   padding-top: 3rem;
   flex: auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 10% 90%;
   position: relative;
 }
 

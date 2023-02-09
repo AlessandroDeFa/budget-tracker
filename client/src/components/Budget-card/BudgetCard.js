@@ -1,5 +1,7 @@
 import React from "react";
 import "./budgetCard.css";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
 import { Card, ProgressBar } from "react-bootstrap";
 import { Button } from "@mui/material";
 
@@ -17,8 +19,14 @@ const getProgressBg = (max, now) => {
 
 const now = 100;
 
-export const BudgetCard = ({ budget }) => {
+export const BudgetCard = ({ budget, setCategoryBudget }) => {
   const formatted_date = budget.data_entry.split("T")[0];
+  const { setInfoBudget, infoBudget } = useContext(ContextApp);
+
+  const handleClickInfoBudget = () => {
+    setCategoryBudget(budget.category_budgets);
+    setInfoBudget(!infoBudget);
+  };
 
   return (
     <li className="list-card-budget">
@@ -39,7 +47,9 @@ export const BudgetCard = ({ budget }) => {
           />
           <div className="btn-budget-card">
             <Button variant="contained">Add Expense</Button>
-            <Button variant="outlined">View Expenses</Button>
+            <Button variant="outlined" onClick={handleClickInfoBudget}>
+              View Expenses
+            </Button>
           </div>
         </Card.Body>
       </Card>

@@ -78,6 +78,7 @@
 
 .App {
   background: var(--color-bg);
+  min-height: 100vh;
 }
 
 .overlay.open {
@@ -98,15 +99,16 @@
 .flex {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  /*responsive min- */
+  position: relative;
 }
 
 
 .flex-1 {
   display: flex;
-  flex: auto;
-
-  position: relative;
+  /* flex: auto; */
+  height: calc(100% - 62px);
 }
 
 .main {

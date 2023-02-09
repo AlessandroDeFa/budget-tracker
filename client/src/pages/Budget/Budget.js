@@ -76,7 +76,6 @@ export const Budget = () => {
               <Button variant="contained" onClick={() => setFormBudget(true)}>
                 Add Budget
               </Button>
-              <Button variant="outlined">Add Expense</Button>
             </div>
           </div>
           <Budgets />

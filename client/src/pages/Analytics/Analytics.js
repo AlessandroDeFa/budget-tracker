@@ -57,7 +57,7 @@ export const Analytics = () => {
   const PieChart = ({ data }) => {
     return (
       <Chart
-        width={"95%"}
+        width={"90%"}
         height={"95%"}
         chartType="PieChart"
         data={data}

@@ -44,6 +44,5 @@
   list-style: none;
   overflow-y: auto;
   height: calc(100% - 9rem);
-  /* max-height: 282px; */
 
 }
