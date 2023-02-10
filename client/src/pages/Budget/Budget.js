@@ -11,10 +11,14 @@ import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
 import { AlertMessasgeDelete } from "../../components/AlertMessageDelete/AlertMessasgeDelete";
 
 export const Budget = () => {
-  const { setErrorAdd, setSuccessAddBudget, setFormBudgetSubmitted } =
-    useContext(ContextApp);
+  const {
+    setErrorAdd,
+    setSuccessAddBudget,
+    setFormBudgetSubmitted,
+    formBudget,
+    setFormBudget,
+  } = useContext(ContextApp);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [formBudget, setFormBudget] = useState(false);
 
   const [amountBudget, setAmountBudget] = useState(0);
   const [categoryBudget, setCategoryBudget] = useState("");

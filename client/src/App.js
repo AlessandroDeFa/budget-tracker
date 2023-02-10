@@ -10,6 +10,7 @@ export const ContextApp = createContext();
 function App() {
   const [form, setForm] = useState(false);
   const [formUpdate, setFormUpdate] = useState(false);
+  const [formBudget, setFormBudget] = useState(false);
   const [infoBudget, setInfoBudget] = useState(false);
   const [formAddExpense, setFormAddExpense] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -84,7 +85,9 @@ function App() {
       <div
         className={`overlay ${form ? "open" : "closed"} ${
           formUpdate ? "openUpdate" : "closedUpdate"
-        }`}
+        } ${formBudget ? "openBudget" : "closedBudget"} ${
+          infoBudget ? "openInfoBudget" : "closedInfoBudget"
+        } ${formAddExpense ? "openExpense" : "closesExpense"} `}
       ></div>
       <ContextApp.Provider
         value={{
@@ -103,6 +106,8 @@ function App() {
           setForm,
           formUpdate,
           setFormUpdate,
+          formBudget,
+          setFormBudget,
           infoBudget,
           setInfoBudget,
           errorAdd,
