@@ -1,0 +1,9 @@
+.list-expenses {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-expense-budget {
+  margin-right: .5rem;
+}

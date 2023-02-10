@@ -129,4 +129,83 @@ app.post("/api/insert-budget", (req, res) => {
   }
 });
 
+// DELETE BUDGETS
+
+app.delete("/api/delete-budget/:id", (req, res) => {
+  const id = req.params.id;
+  const sqlDelete = "DELETE FROM budgets WHERE id = ?;";
+  const sqlDeleteExpenses = "DELETE FROM expenses WHERE budget_id = ?;";
+  try {
+    db.query(sqlDeleteExpenses, id, (err, result) => {
+      if (err) {
+        throw err;
+      }
+    });
+    db.query(sqlDelete, id, (err, result) => {
+      if (err) {
+        throw err;
+      }
+
+      res.status(200).send({ message: "Budget deleted successfully." });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to delete the budget." });
+  }
+});
+
+// GET EXPENSE-BUDGET
+
+app.get("/api/get-expense-budget", (req, res) => {
+  const sqlGet = "SELECT * FROM expenses";
+  db.query(sqlGet, (err, result) => {
+    res.send(result);
+  });
+});
+
+// POST EXPENSE-BUDGET
+
+app.post("/api/insert-expense-budget", (req, res) => {
+  const getIdBudget = req.body.getIdBudget;
+  const amountExpense = req.body.amountExpense;
+  const nameExpense = req.body.nameExpense;
+
+  const sqlInsert =
+    "INSERT INTO expenses (budget_id, expense_amount, expense_name) VALUES (?,?,?);";
+  try {
+    db.query(
+      sqlInsert,
+      [getIdBudget, amountExpense, nameExpense],
+      (err, result) => {
+        if (err) {
+          throw err;
+        }
+        res.status(200).send({ message: "Expense inserted successfully." });
+      }
+    );
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to insert expense." });
+  }
+});
+
+// DELETE EXPENSE BUDGET
+
+app.delete("/api/delete-expense/:id", (req, res) => {
+  const id = req.params.id;
+  const sqlDelete = "DELETE FROM expenses WHERE expense_id = ?;";
+  try {
+    db.query(sqlDelete, id, (err, result) => {
+      if (err) {
+        throw err;
+      }
+
+      res.status(200).send({ message: "Expense deleted successfully." });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to delete the expense." });
+  }
+});
+
 app.listen(3001, () => console.log("server running on port 3001"));

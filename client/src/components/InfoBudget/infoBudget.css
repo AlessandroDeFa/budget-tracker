@@ -65,12 +65,9 @@
   max-height: 200px;
 }
 
-.list-expenses {
+.container-btn-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.container-btn-delete {
   margin-top: 2rem;
 }

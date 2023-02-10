@@ -19,14 +19,34 @@ const getProgressBg = (max, now) => {
 
 const now = 100;
 
-export const BudgetCard = ({ budget, setCategoryBudget }) => {
-  const formatted_date = budget.data_entry.split("T")[0];
-  const { setInfoBudget, infoBudget } = useContext(ContextApp);
+export const BudgetCard = ({
+  budget,
+  setCategoryBudget,
+  setIdBudget,
+  expenseTotals,
+  setDateBudget,
+}) => {
+  const {
+    setInfoBudget,
+    infoBudget,
+    formAddExpense,
+    setFormAddExpense,
+    expenseBudget,
+  } = useContext(ContextApp);
 
   const handleClickInfoBudget = () => {
     setCategoryBudget(budget.category_budgets);
     setInfoBudget(!infoBudget);
+    setIdBudget(budget.id);
+    setDateBudget(budget.data_entry);
   };
+
+  const handleClickAddExpense = () => {
+    setFormAddExpense(!formAddExpense);
+    setIdBudget(budget.id);
+  };
+
+  const budgetTotal = expenseTotals.get(budget.id) || 0;
 
   return (
     <li className="list-card-budget">
@@ -34,19 +54,21 @@ export const BudgetCard = ({ budget, setCategoryBudget }) => {
         <Card.Body>
           <Card.Title className="card-title">
             <div>{budget.category_budgets}</div>
-            <div className={getProgressBg(budget.amount_budgets, now)}>
-              <span className="min-amount">{now}</span> /{" "}
+            <div className={getProgressBg(budget.amount_budgets, budgetTotal)}>
+              <span className="min-amount">{budgetTotal}</span> /{" "}
               <span className="max-amount">{budget.amount_budgets}</span>
             </div>
           </Card.Title>
           <ProgressBar
             min={0}
             max={budget.amount_budgets}
-            now={now}
-            className={getProgressvariant(budget.amount_budgets, now)}
+            now={budgetTotal}
+            className={getProgressvariant(budget.amount_budgets, budgetTotal)}
           />
           <div className="btn-budget-card">
-            <Button variant="contained">Add Expense</Button>
+            <Button variant="contained" onClick={handleClickAddExpense}>
+              Add Expense
+            </Button>
             <Button variant="outlined" onClick={handleClickInfoBudget}>
               View Expenses
             </Button>

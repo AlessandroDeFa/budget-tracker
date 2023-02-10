@@ -6,8 +6,6 @@ import { MdMode } from "react-icons/md";
 import { useContext } from "react";
 import { ContextApp } from "../../App";
 import { IoMdTrash } from "react-icons/io";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
 
 export const Transaction = ({ transaction, activeFormUpdate }) => {
   const formatted_date = transaction.data_entry.split("T")[0];

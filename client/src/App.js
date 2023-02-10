@@ -11,13 +11,22 @@ function App() {
   const [form, setForm] = useState(false);
   const [formUpdate, setFormUpdate] = useState(false);
   const [infoBudget, setInfoBudget] = useState(false);
+  const [formAddExpense, setFormAddExpense] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
+  const [expenseBudget, setExpenseBudget] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formBudgetSubmitted, setFormBudgetSubmitted] = useState(false);
+  const [formExpenseBudgetSubmitted, setFormExpenseBudgetSubmitted] =
+    useState(false);
+  const [amountNowBudget, setAmountNowBudget] = useState(0);
   const [errorAdd, setErrorAdd] = useState(false);
   const [successAdd, setSuccessAdd] = useState(false);
+  const [successDelBudget, setSuccesDelBudget] = useState(false);
+  const [successAddBudget, setSuccessAddBudget] = useState(false);
+  const [successAddExpenseBudget, setSuccessAddExpenseBudget] = useState(false);
+  const [successDelExpenseBudget, setSuccesDelExpenseBudget] = useState(false);
   const [errorDel, setErrorDel] = useState(false);
   const [successDel, setSuccessDel] = useState(false);
   const [errorUp, setErrorUp] = useState(false);
@@ -55,6 +64,21 @@ function App() {
     setFormBudgetSubmitted(false);
   }, [formBudgetSubmitted]);
 
+  // fetch data expense budget from database to client
+
+  useEffect(() => {
+    async function fetchDataExpenseBudget() {
+      const response = await fetch(
+        "http://localhost:3001/api/get-expense-budget"
+      );
+      const data = await response.json();
+      setExpenseBudget(data);
+    }
+    fetchDataExpenseBudget();
+
+    setFormExpenseBudgetSubmitted(false);
+  }, [formExpenseBudgetSubmitted]);
+
   return (
     <div className={`App ${theme}`}>
       <div
@@ -69,8 +93,12 @@ function App() {
           setTransactions,
           budgets,
           setBudgets,
+          expenseBudget,
+          setExpenseBudget,
           setFormSubmitted,
           setFormBudgetSubmitted,
+          formExpenseBudgetSubmitted,
+          setFormExpenseBudgetSubmitted,
           form,
           setForm,
           formUpdate,
@@ -89,6 +117,18 @@ function App() {
           setErrorUp,
           successUp,
           setSuccessUp,
+          successAddBudget,
+          setSuccessAddBudget,
+          successDelBudget,
+          setSuccesDelBudget,
+          formAddExpense,
+          setFormAddExpense,
+          setAmountNowBudget,
+          amountNowBudget,
+          successAddExpenseBudget,
+          setSuccessAddExpenseBudget,
+          successDelExpenseBudget,
+          setSuccesDelExpenseBudget,
         }}
       >
         <Routes>

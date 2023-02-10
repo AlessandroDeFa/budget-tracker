@@ -2,9 +2,45 @@ import React from "react";
 import "./infoBudget.css";
 import { Button } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
-import { IoMdTrash } from "react-icons/io";
+import { useContext } from "react";
+import { ContextApp } from "../../App";
+import { ExpenseBudget } from "../ExpensesBudget/ExpenseBudget";
 
-export const InfoBudget = ({ infoBudget, setInfoBudget, categoryBudget }) => {
+export const InfoBudget = ({
+  infoBudget,
+  setInfoBudget,
+  categoryBudget,
+  getIdBudget,
+  getdateBudget,
+}) => {
+  const {
+    setFormBudgetSubmitted,
+    setSuccesDelBudget,
+    setErrorDel,
+    expenseBudget,
+  } = useContext(ContextApp);
+
+  const deleteBudget = (id) => {
+    setFormBudgetSubmitted(true);
+    fetch(`http://localhost:3001/api/delete-budget/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          setErrorDel(true);
+          throw new Error("Failed to delete transaction");
+        }
+        setInfoBudget(false);
+        setSuccesDelBudget(response);
+      })
+      .catch((error) => {
+        setErrorDel(true);
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  };
+
+  const formatted_date = getdateBudget.split("T")[0];
+
   return (
     <div className={`info-budget ${infoBudget ? "open" : "closed"}`}>
       <div className="info-container">
@@ -26,21 +62,28 @@ export const InfoBudget = ({ infoBudget, setInfoBudget, categoryBudget }) => {
         </div>
         <div className="container-expenses">
           <ul className="container-list-expenses">
-            <li className="list-expenses">
-              <div>nome expenses</div>
-              <div>
-                <span>100 eur</span>
-                <Button variant="text" className="btn-exit-info">
-                  <IoMdTrash className="icon-del" />
-                </Button>
-              </div>
-            </li>
+            {expenseBudget
+              .filter((expense) => expense.budget_id === getIdBudget)
+              .sort((a, b) => b.expense_id - a.expense_id)
+              .map((expense) => (
+                <ExpenseBudget
+                  key={ExpenseBudget.expense_id}
+                  expense={expense}
+                />
+              ))}
           </ul>
         </div>
-        <div className="container-btn-delete">
-          <Button color="error" variant="outlined">
-            Delete
-          </Button>
+        <div className="container-btn-date">
+          <div>
+            <Button
+              color="error"
+              variant="outlined"
+              onClick={() => deleteBudget(getIdBudget)}
+            >
+              Delete
+            </Button>
+          </div>
+          <div>{formatted_date}</div>
         </div>
       </div>
     </div>

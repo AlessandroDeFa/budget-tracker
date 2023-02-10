@@ -8,9 +8,10 @@ import { FormBudget } from "../../components/FormBudget/FormBudget";
 import { useContext } from "react";
 import { ContextApp } from "../../App";
 import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
+import { AlertMessasgeDelete } from "../../components/AlertMessageDelete/AlertMessasgeDelete";
 
 export const Budget = () => {
-  const { setErrorAdd, setSuccessAdd, setFormBudgetSubmitted } =
+  const { setErrorAdd, setSuccessAddBudget, setFormBudgetSubmitted } =
     useContext(ContextApp);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [formBudget, setFormBudget] = useState(false);
@@ -55,7 +56,7 @@ export const Budget = () => {
           }
           setAmountBudget(0);
           setCategoryBudget("");
-          setSuccessAdd(response);
+          setSuccessAddBudget(response);
         })
         .catch((error) => {
           setErrorAdd(error);
@@ -89,6 +90,7 @@ export const Budget = () => {
             handleSubmitBudget={(e) => handleSubmitBudget(e)}
           />
           <AlertMessage />
+          <AlertMessasgeDelete />
         </div>
       </div>
     </div>
