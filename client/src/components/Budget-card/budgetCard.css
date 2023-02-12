@@ -62,3 +62,14 @@
   color: var(--color-scrollbar);
   font-size: 1.1rem;
 }
+
+
+/* RESPONSIVE */
+
+@media (max-width: 500px) {
+  .btn-budget-card {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}

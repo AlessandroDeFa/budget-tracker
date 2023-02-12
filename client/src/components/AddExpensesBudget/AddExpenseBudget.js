@@ -51,7 +51,7 @@ export const AddExpenseBudget = ({
                   variant="filled"
                   className="textfield-1"
                   InputLabelProps={{ className: "textfield" }}
-                  inputProps={{ className: "textfield-1", maxLength: 40 }}
+                  inputProps={{ className: "textfield-1", maxLength: 12 }}
                   multiline
                   maxRows={4}
                   onChange={(e) => setNameExpense(e.target.value)}

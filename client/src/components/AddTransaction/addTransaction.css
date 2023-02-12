@@ -6,7 +6,6 @@
   gap: 2rem;
   grid-column: span 2;
   place-items: center;
-  /* position: relative; */
 }
 
 .text-add-transaction {
@@ -21,4 +20,23 @@
 .icon-btn {
   width: 25px;
   height: 25px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .text-add-transaction {
+    font-size: 1.1rem;
+  }
+
+  .container-add-transaction {
+    grid-column: 1;
+    gap: 1rem;
+    justify-content: start;
+  }
+
+  .btn-add-transaction {
+    max-width: 50px;
+    max-height: 50px;
+  }
 }

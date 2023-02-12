@@ -124,3 +124,44 @@
 .btn-form button {
   width: 100%;
 }
+
+
+@media (max-width: 900px) {
+
+  .form-budget,
+  .form-addexpense {
+    width: 425px;
+    padding: 1rem;
+  }
+
+  .info-budget {
+    width: 420px;
+    padding: 1rem;
+  }
+
+  .form-budget .amount-form,
+  .form-addexpense .amount-form {
+    width: 11rem !important;
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .main.budget {
+    position: unset;
+  }
+
+  .form-budget,
+  .form-addexpense,
+  .info-budget {
+    width: 325px;
+  }
+
+  .form-budget .amount-form,
+  .form-addexpense .amount-form {
+    width: 6rem !important;
+    font-size: 1.5rem !important;
+  }
+
+}

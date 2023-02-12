@@ -15,10 +15,12 @@
 
 .left-info-transaction {
   grid-template-columns: minmax(90px, 110px) minmax(90px, 110px) minmax(90px, 110px);
+  overflow-x: auto;
 }
 
 .right-info-transaction {
   grid-template-columns: minmax(90px, 110px) minmax(90px, 1fr) minmax(min-content, max-content);
+  overflow-x: auto;
 }
 
 .amount-transaction {
@@ -29,7 +31,10 @@
 .container-note {
   display: flex;
   align-items: center;
+  overflow-x: auto;
 }
+
+
 
 .amount-transaction.income-transaction {
   color: var(--color-income);
@@ -48,7 +53,7 @@
 .icon-del {
   width: 20px;
   height: 20px;
-  color: var(--color-text)
+  color: var(--color-text);
 }
 
 ::-webkit-scrollbar {
@@ -68,4 +73,16 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+  .container-transaction {
+    grid-template-columns: 1fr;
+    font-size: .8rem;
+  }
+
 }

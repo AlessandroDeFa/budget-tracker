@@ -74,10 +74,10 @@ export const Budget = () => {
       <Header handleClick={handleClick} />
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
-        <div className="main-budget">
+        <div className="main budget">
           <div className="container-title-budget">
             <div>Budgets</div>
-            <div className="btn-budget">
+            <div>
               <Button variant="contained" onClick={() => setFormBudget(true)}>
                 Add Budget
               </Button>

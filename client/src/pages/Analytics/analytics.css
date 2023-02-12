@@ -2,3 +2,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.text-error-chart {
+  color: var(--color-text);
+  place-self: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .grid-analytics {
+    grid-template-columns: 1fr;
+  }
+
+
+}

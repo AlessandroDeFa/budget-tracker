@@ -36,7 +36,7 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
         <div className="left-info-transaction">
           <div>{transaction.category}</div>
           <div>{formatted_date}</div>
-          <div>{transaction.name}</div>
+          <div className="name-transaction">{transaction.name}</div>
         </div>
         <div className="right-info-transaction">
           <div
@@ -53,19 +53,23 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
           <div className="container-note">{transaction.note}</div>
           <div className="container-del-mod">
             <Button
+              size="small"
               onClick={form ? () => {} : () => activeFormUpdate(transaction.id)}
               variant="text"
+              className="btn-exit-form btns-transaction "
             >
               <MdMode className="icon-modify" />
             </Button>
+
             <Button
+              size="small"
               onClick={
                 form || formUpdate
                   ? () => {}
                   : () => deleteTransaction(transaction.id)
               }
               variant="text"
-              className="btn-exit-form"
+              className="btn-exit-form btns-transaction "
             >
               <IoMdTrash className="icon-del" />
             </Button>

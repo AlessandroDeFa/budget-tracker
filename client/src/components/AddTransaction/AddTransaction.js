@@ -75,7 +75,12 @@ export const AddTransaction = () => {
     <div className="container-add-transaction">
       <div className="text-add-transaction">Add Transaction</div>
       <div className="btn-container">
-        <Fab onClick={activeForm} color="primary" aria-label="add">
+        <Fab
+          onClick={activeForm}
+          className="btn-add-transaction"
+          color="primary"
+          aria-label="add"
+        >
           <CgMathPlus className="icon-btn" />
         </Fab>
       </div>

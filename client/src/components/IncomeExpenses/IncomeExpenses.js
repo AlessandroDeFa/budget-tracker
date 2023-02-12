@@ -27,7 +27,7 @@ export const IncomeExpenses = () => {
             <SlGraph className="graph-icon income" />
           </div>
           <div>
-            <div className="title-income">Income</div>
+            <div className="exp-inc-text">Income</div>
             <div className="income">
               <span>{income}</span>
               <span>€</span>
@@ -39,7 +39,7 @@ export const IncomeExpenses = () => {
             <SlGraph className="graph-icon expenses" />
           </div>
           <div>
-            <div>Expense</div>
+            <div className="exp-inc-text">Expense</div>
             <div className="expenses">
               <span>{expenses}</span>
               <span>€</span>

@@ -24,3 +24,16 @@
 .text-available {
   color: var(--color-general);
 }
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1250px) {
+  .title-balance {
+    font-size: 1.2rem;
+  }
+
+  .amount {
+    font-size: 2rem;
+  }
+}

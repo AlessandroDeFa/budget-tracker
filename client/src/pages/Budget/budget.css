@@ -1,4 +1,4 @@
-.main-budget {
+.main.budget {
   margin-left: 7.5rem;
   margin-right: 3rem;
   padding-top: 3rem;
@@ -18,7 +18,21 @@
   padding-bottom: 1rem;
 }
 
-.btn-budget {
-  display: flex;
-  gap: 1rem;
+/* RESPONSIVE */
+
+
+@media (max-width: 900px) {
+  .main.budget {
+    margin-left: 5.5rem;
+    margin-right: 1rem;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-title-budget {
+    font-size: 1.2rem;
+  }
+
+
 }

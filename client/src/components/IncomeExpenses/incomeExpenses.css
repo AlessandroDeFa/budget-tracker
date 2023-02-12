@@ -10,7 +10,6 @@
 }
 
 .income-expenses:first-child {
-
   position: relative;
 }
 
@@ -28,6 +27,7 @@
 .income-expenses {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 3.5rem 0;
 }
 
@@ -54,4 +54,36 @@
 .expenses {
   display: flex;
   gap: .5rem;
+}
+
+/*RESPONSIVE */
+
+@media (max-width: 1250px) {
+  .graph-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .income,
+  .expenses {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width:900px) {
+  .income-expenses {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .income-expenses {
+    display: grid;
+    place-items: center;
+    padding: .5rem 0;
+  }
+
+  .exp-inc-text {
+    text-align: center;
+  }
 }

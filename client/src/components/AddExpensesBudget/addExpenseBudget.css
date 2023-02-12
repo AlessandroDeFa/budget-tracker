@@ -7,7 +7,6 @@
   z-index: 999;
   width: 500px;
   margin: 0 auto;
-  /* background: var(--color-sidebar); */
   background-color: var(--color-sidebar);
   box-shadow: 0px 0px 15px -2px var(--color-shadow);
   padding: 1.5rem;

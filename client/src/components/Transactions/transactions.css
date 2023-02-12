@@ -46,3 +46,35 @@
   height: calc(100% - 9rem);
 
 }
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+  .container-transactions {
+    padding: 1rem;
+  }
+
+  .option-transactions {
+    grid-template-columns: 1fr;
+    padding: 2rem 0 1rem 0;
+    font-size: .9rem;
+  }
+
+  .left-info {
+    margin-bottom: 1rem;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .left-info,
+  .right-info {
+
+    display: flex;
+    gap: 1rem;
+
+  }
+
+}

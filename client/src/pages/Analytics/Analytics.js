@@ -125,14 +125,26 @@ export const Analytics = () => {
       <Header handleClick={handleClick} />
       <div className="flex-1">
         <Sidebar open={sidebarOpen} />
-        <div className="main">
+        <div className="main analytics">
           <div className="grid-analytics">
-            <div>
-              <PieChart data={pieChartData} />
-            </div>
-            <div>
-              <BarChart data={barChartData} />
-            </div>
+            {pieChartData && pieChartData.length > 1 ? (
+              <div>
+                <PieChart data={pieChartData} />
+              </div>
+            ) : (
+              <div className="text-error-chart">
+                Data for pie chart not available
+              </div>
+            )}
+            {barChartData && barChartData.length > 1 ? (
+              <div>
+                <BarChart data={barChartData} />
+              </div>
+            ) : (
+              <div className="text-error-chart">
+                Data for bar chart not available
+              </div>
+            )}
           </div>
 
           <div>
