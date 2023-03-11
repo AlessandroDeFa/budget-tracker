@@ -41,17 +41,20 @@ export const Budgets = () => {
 
     if (!error) {
       setFormExpenseBudgetSubmitted(true);
-      fetch("http://localhost:3001/api/insert-expense-budget", {
-        method: "POST",
-        body: JSON.stringify({
-          getIdBudget: getIdBudget,
-          amountExpense: amountExpense,
-          nameExpense: nameExpense,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        "https://budget-trackerdb.herokuapp.com/api/insert-expense-budget",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            getIdBudget: getIdBudget,
+            amountExpense: amountExpense,
+            nameExpense: nameExpense,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

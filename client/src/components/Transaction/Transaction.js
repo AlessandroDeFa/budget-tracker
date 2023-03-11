@@ -14,7 +14,7 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
 
   const deleteTransaction = (id) => {
     setFormSubmitted(true);
-    fetch(`http://localhost:3001/api/delete/${id}`, {
+    fetch(`https://budget-trackerdb.herokuapp.com/api/delete/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

@@ -22,7 +22,7 @@ export const InfoBudget = ({
 
   const deleteBudget = (id) => {
     setFormBudgetSubmitted(true);
-    fetch(`http://localhost:3001/api/delete-budget/${id}`, {
+    fetch(`https://budget-trackerdb.herokuapp.com/api/delete-budget/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

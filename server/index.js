@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
+require("dotenv").config();
+const PORT = 3001;
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "budget_tracker_db",
+  host: "eu-cdbr-west-03.cleardb.net",
+  user: "b31e79a29560a0",
+  password: "61217733",
+  database: "heroku_5d6e10b248d6a41",
 });
 
 db.connect((err) => {
@@ -208,4 +210,6 @@ app.delete("/api/delete-expense/:id", (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("server running on port 3001"));
+app.listen(process.env.PORT || PORT, () =>
+  console.log(`server running on ${PORT}`)
+);

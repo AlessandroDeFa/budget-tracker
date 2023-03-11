@@ -38,7 +38,7 @@ export const Transactions = () => {
       let updatedAmount = expenses ? -newAmount : Math.abs(newAmount);
 
       setFormSubmitted(true);
-      fetch("http://localhost:3001/api/update", {
+      fetch("https://budget-trackerdb.herokuapp.com/api/update", {
         method: "PUT",
         body: JSON.stringify({
           newAmount: updatedAmount,
