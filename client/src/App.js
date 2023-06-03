@@ -43,9 +43,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
-        "https://budget-trackerdb.herokuapp.com/api/get"
-      );
+      const response = await fetch("http://localhost:3001/get");
       const data = await response.json();
       setTransactions(data);
     }
@@ -58,9 +56,7 @@ function App() {
 
   useEffect(() => {
     async function fetchDataBudget() {
-      const response = await fetch(
-        "https://budget-trackerdb.herokuapp.com/api/get-budgets"
-      );
+      const response = await fetch("http://localhost:3001/get-budgets");
       const data = await response.json();
       setBudgets(data);
     }
@@ -73,9 +69,7 @@ function App() {
 
   useEffect(() => {
     async function fetchDataExpenseBudget() {
-      const response = await fetch(
-        "https://budget-trackerdb.herokuapp.com/api/get-expense-budget"
-      );
+      const response = await fetch("http://localhost:3001/get-expense-budget");
       const data = await response.json();
       setExpenseBudget(data);
     }

@@ -6,25 +6,49 @@ require("dotenv").config();
 const PORT = 3001;
 
 const db = mysql.createConnection({
-  host: "eu-cdbr-west-03.cleardb.net",
-  user: "b31e79a29560a0",
-  password: "61217733",
-  database: "heroku_5d6e10b248d6a41",
+  host: process.MYSQL_ADDON_HOST,
+  user: process.MYSQL_ADDON_USER,
+  password: process.MYSQL_ADDON_PASSWORD,
+  database: process.MYSQL_ADDON_DB,
 });
 
-db.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("Connect mysql");
-});
+function handleDisconnect() {
+  db.connect((err) => {
+    if (err) {
+      console.log("error when connecting to db:", err);
+      setTimeout(handleDisconnect, 2000);
+    }
+  });
+
+  db.on("error", (err) => {
+    console.log("db error", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+
+handleDisconnect();
+
+// db.connect((err) => {
+//   if (err) {
+//     throw err;
+//   }
+//   console.log("Connect mysql");
+// });
 
 app.use(cors());
 app.use(express.json());
 
+setInterval(function () {
+  db.query("SELECT 1");
+}, 5000);
+
 // GET
 
-app.get("/api/get", (req, res) => {
+app.get("/get", (req, res) => {
   const sqlGet = "SELECT * FROM transactions";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -103,7 +127,7 @@ app.delete("/api/delete/:id", (req, res) => {
 
 // GET BUDGETS
 
-app.get("/api/get-budgets", (req, res) => {
+app.get("/get-budgets", (req, res) => {
   const sqlGet = "SELECT * FROM budgets";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -158,7 +182,7 @@ app.delete("/api/delete-budget/:id", (req, res) => {
 
 // GET EXPENSE-BUDGET
 
-app.get("/api/get-expense-budget", (req, res) => {
+app.get("/get-expense-budget", (req, res) => {
   const sqlGet = "SELECT * FROM expenses";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -210,6 +234,6 @@ app.delete("/api/delete-expense/:id", (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || PORT, () =>
+app.listen(process.env.MYSQL_ADDON_PORT || PORT, () =>
   console.log(`server running on ${PORT}`)
 );
