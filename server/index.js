@@ -48,7 +48,7 @@ setInterval(function () {
 
 // GET
 
-app.get("/get", (req, res) => {
+app.get("/api/get", (req, res) => {
   const sqlGet = "SELECT * FROM transactions";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -127,7 +127,7 @@ app.delete("/api/delete/:id", (req, res) => {
 
 // GET BUDGETS
 
-app.get("/get-budgets", (req, res) => {
+app.get("/api/get-budgets", (req, res) => {
   const sqlGet = "SELECT * FROM budgets";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -182,7 +182,7 @@ app.delete("/api/delete-budget/:id", (req, res) => {
 
 // GET EXPENSE-BUDGET
 
-app.get("/get-expense-budget", (req, res) => {
+app.get("/api/get-expense-budget", (req, res) => {
   const sqlGet = "SELECT * FROM expenses";
   db.query(sqlGet, (err, result) => {
     res.send(result);

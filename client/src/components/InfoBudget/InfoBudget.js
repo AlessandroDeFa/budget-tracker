@@ -22,9 +22,12 @@ export const InfoBudget = ({
 
   const deleteBudget = (id) => {
     setFormBudgetSubmitted(true);
-    fetch(`https://budget-trackerdb.herokuapp.com/api/delete-budget/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://budget-tracker-server.onrender.com/api/delete-budget/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           setErrorDel(true);

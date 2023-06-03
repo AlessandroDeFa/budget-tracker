@@ -44,7 +44,7 @@ export const Budget = () => {
 
     if (!error) {
       setFormBudgetSubmitted(true);
-      fetch("https://budget-trackerdb.herokuapp.com/api/insert-budget", {
+      fetch("https://budget-tracker-server.onrender.com/api/insert-budget", {
         method: "POST",
         body: JSON.stringify({
           amountBudget: amountBudget,

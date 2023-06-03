@@ -8,8 +8,6 @@ import { useContext } from "react";
 import { ContextApp } from "../../App";
 import { AlertMessage } from "../AlertMessage/AlertMessage";
 
-// togliere not null nel databse su note e mettere che e facoltativo
-
 export const AddTransaction = () => {
   const { setFormSubmitted, form, setForm, setErrorAdd, setSuccessAdd } =
     useContext(ContextApp);
@@ -42,7 +40,7 @@ export const AddTransaction = () => {
       let updatedAmount = expenses ? -amount : Math.abs(amount);
 
       setFormSubmitted(true);
-      fetch("https://budget-trackerdb.herokuapp.com/api/insert", {
+      fetch("https://budget-tracker-server.onrender.com/api/insert", {
         method: "POST",
         body: JSON.stringify({
           amount: updatedAmount,

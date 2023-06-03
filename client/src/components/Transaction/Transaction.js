@@ -14,7 +14,7 @@ export const Transaction = ({ transaction, activeFormUpdate }) => {
 
   const deleteTransaction = (id) => {
     setFormSubmitted(true);
-    fetch(`https://budget-trackerdb.herokuapp.com/api/delete/${id}`, {
+    fetch(`https://budget-tracker-server.onrender.com/api/delete/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
