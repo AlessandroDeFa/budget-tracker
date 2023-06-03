@@ -46,7 +46,6 @@ function App() {
       const response = await fetch(
         "https://budget-tracker-server.onrender.com/api/get"
       );
-      console.log(response.body);
       const data = await response.json();
 
       setTransactions(data);

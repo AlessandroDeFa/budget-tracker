@@ -6,10 +6,10 @@ require("dotenv").config();
 const PORT = 3001;
 
 const db = mysql.createConnection({
-  host: process.MYSQL_ADDON_HOST,
-  user: process.MYSQL_ADDON_USER,
-  password: process.MYSQL_ADDON_PASSWORD,
-  database: process.MYSQL_ADDON_DB,
+  host: process.env.MYSQL_ADDON_HOST,
+  user: process.env.MYSQL_ADDON_USER,
+  password: process.env.MYSQL_ADDON_PASSWORD,
+  database: process.env.MYSQL_ADDON_DB,
 });
 
 function handleDisconnect() {
@@ -127,7 +127,7 @@ app.delete("/api/delete/:id", (req, res) => {
 
 // GET BUDGETS
 
-app.get("/api/get-budgets", (req, res) => {
+app.get("api/get-budgets", (req, res) => {
   const sqlGet = "SELECT * FROM budgets";
   db.query(sqlGet, (err, result) => {
     res.send(result);
@@ -182,7 +182,7 @@ app.delete("/api/delete-budget/:id", (req, res) => {
 
 // GET EXPENSE-BUDGET
 
-app.get("/api/get-expense-budget", (req, res) => {
+app.get("api/get-expense-budget", (req, res) => {
   const sqlGet = "SELECT * FROM expenses";
   db.query(sqlGet, (err, result) => {
     res.send(result);
